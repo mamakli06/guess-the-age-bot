@@ -269,7 +269,7 @@ bot.callbackQuery('geri', (ctx) => {
     })
 })
 
-bot.command("game","oyna" async ctx => {
+bot.command("game", async ctx => {
 	console.log("Game command")
 	if (!isGroupChat(ctx)) {
 		//PM, skipping
@@ -565,7 +565,7 @@ bot.command("game","oyna" async ctx => {
 	}, waitStep)
 })
 
-bot.command("stop", "kapat" async ctx => {
+bot.command("stop", async ctx => {
 	if (!isGroupChat(ctx)) {
 		//PM, skipping
 		return await handlers.onlyGroups(ctx)
