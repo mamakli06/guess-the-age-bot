@@ -96,7 +96,7 @@ const getRoundMessageText = ctx => {
 						.join("\n")}\n`
 				: ""
 		}
-		${["🟢", "🟡", "🔴"].slice(0, ctx.session.time).join("")}${"⚪️".repeat(
+		${["M", "A", "M", "A", "K", "L", "I", "🖤", "❤️"].slice(0, ctx.session.time).join("")}${"⚪️".repeat(
 		repeatCount
 	)}
 	`)
@@ -155,17 +155,17 @@ const handlers = {
 	greet: async ctx =>
 		await ctx.reply(
 			trim(`
-				👋 Salam. Mən qrup çatlarında "yaşı təxmin et" oynamaq üçün bir robotam.
+				👋 Selam ben yaş tahmin botuyum.
 			
-				📋 Qaydalar sadədir: mən sizə bir insanın şəklini göndərirəm, sizin vəzifəniz isə odur ${bold(
+				📋 Benim attığım fotoları yaş tahminini yazın ve tahmininize göre puan alın ${bold(
 					"tez"
-				)} onun yaşını təxmin edin. Çata təxmini yaşınızı rəqəmlə göndərin cavabınızı nəzərə alacam. Cavab vermək üçün təxminən 8 saniyəniz var, ona görə də əsnəməyin. Nə qədər dəqiq cavab versəniz, bir o qədər az xal itirirsiniz.
+				)} Hızlı olan kazanır.
 				${
 					isGroupChat(ctx)
 						? ""
-						: `\n😉 Əvvəlcə məni əlavə et ${bold(
-								`qrup söhbəti`
-						  )} və əmri işə salın /game.\n`
+						: `\n😉 gruba davet et ${bold(
+								`grup sohbetine`
+						  )} Başlatma komutu /game.\n`
 				}
 				${bold(`Команды:`)}
 				
@@ -241,15 +241,15 @@ bot.use(session({getSessionKey, initial: () => ({})}))
 
 bot.command('start', (ctx) => {
     ctx.reply(`
-👋 Salam!
+👋 Selam!
 
- Mən, vaxtıvızı əyləncəli hala gətirmək üçün Yaş Təxmin etmə botuyam 🙂
+Ben Yaş tahmin botuyum 🙂
 
- Daha ətraflı məlumat üçün /help əmrindən istifadə edin.. `,{
+ Eğer yardım veya bilgi lazımsa @cengonuzz.. `,{
         reply_markup:{
             inline_keyboard:[
                 [{text:'Botu Grupa Ekle ✅', url:`https://t.me/${process.env.BOT_ISMI}?startgroup=true`}],
-                [{text:'Resmi Kanalımız 📣', url:`t.me/goldenbotresmi`},{text:'Əmirlər', callback_data:'əmr'}]
+                [{text:'Resmi Kanalımız 📣', url:`t.me/mamaklibirininruhu`},{text:'komutlar', callback_data:'əmr'}]
             ]
         }
     })
@@ -257,7 +257,7 @@ bot.command('start', (ctx) => {
 
 //geri
 bot.callbackQuery("əmr", async (ctx) => {
-  await ctx.reply(`\n👋 Salam Mən qrup çatlarında yaşı təxmin et oynamaq üçün bir robotam Qaydalar sadədir: Mən sizə bir Müğəninin şəklini atıram, sizin vəzifəniz onun yaşını təxmin etməkdir. Nə qədər dəqiq cavab versəniz, bir o qədər az xal itirirsiniz Əmrlər /game - 🕹 Yeni oyun /stop - 🛑 Oyunu dayandir /top - 🔝  Çat oyunçusu reytinqi /chart - 🌎 Qlobal reytinq /help - Əmrlər haqqinda məlumat `,{
+  await ctx.reply(`\n👋 Selam ben yaş tahmin botuyum mamaklı abinize teşekkür edin komutlar /game - 🕹 Yeni oyun /stop - 🛑 Oyunu bitir /top - 🔝  grup oyuncu reytingi /chart - 🌎 global reyting  `,{
         reply_markup:{
             inline_keyboard:[
                 [{text:'Geri Qayıt', callback_data:"geri"}]
