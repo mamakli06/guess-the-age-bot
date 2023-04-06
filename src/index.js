@@ -140,7 +140,7 @@ const handlers = {
 	greet: async ctx =>
 		await ctx.reply(
 			trim(`
-				👋 Salam. Mən qrup çatlarında "yaşı təxmin et" oynamaq üçün bir robotam.
+				👋 Selam ben yaş tahmin botuyum.
 			
 				📋 Qaydalar sadədir: mən sizə bir insanın şəklini göndərirəm, sizin vəzifəniz isə odur ${bold(
 					"tez"
@@ -148,8 +148,8 @@ const handlers = {
 				${
 					isGroupChat(ctx)
 						? ""
-						: `\n😉 Əvvəlcə məni əlavə et ${bold(
-								`qrup söhbəti`
+						: `\n😉 Beni gruba ekle ${bold(
+								``
 						  )} və əmri işə salın /game.\n`
 				}
 				${bold(`Команды:`)}
@@ -233,8 +233,8 @@ bot.command('start', (ctx) => {
  Daha ətraflı məlumat üçün /help əmrindən istifadə edin.. `,{
         reply_markup:{
             inline_keyboard:[
-                [{text:'Botu Qrupa Əlavə Edin 👥', url:`https://t.me/${ctx.me.username}?startgroup=add`}],
-                [{text:'Rəsmi Kanalımız 🆕', url:`t.me/goldenbotresmi`},{text:'Əmirlər', callback_data:'əmr'}]
+                [{text:'Botu gruba ekle 👥', url:`https://t.me/${ctx.me.username}?startgroup=add`}],
+                [{text:'Resmi Kanalımız 🆕', url:`t.me/Mamaklibirininruhu`},{text:'komutlar', callback_data:'əmr'}]
             ]
         }
     })
