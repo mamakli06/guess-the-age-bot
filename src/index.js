@@ -96,7 +96,7 @@ const getRoundMessageText = ctx => {
 						.join("\n")}\n`
 				: ""
 		}
-		${["🟢", "🟡", "🔴"].slice(0, ctx.session.time).join("")}${"⚪️".repeat(
+		${["M", "A", "M", "A", "K", "L", "I", "🖤", "❤️"].slice(0, ctx.session.time).join("")}${"⚪️".repeat(
 		repeatCount
 	)}
 	`)
