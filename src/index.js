@@ -176,14 +176,14 @@ const handlers = {
 		),
 	onlyGroups: async ctx =>
 		await ctx.reply(
-			`❌ Bu əmr yalnız qrup söhbətləri ${bold(
-				`üçün mövcuddur`
-			)}. Bir Qrup yaradın və ora botu əlavə edin.`,
+			`❌ Bu komut sadece gruplar ${bold(
+				`için mevcuttur`
+			)}. Bir gruba ekleyin ve bota eğlencenin keyfine varın.`,
 			isGroupChat(ctx)
 				? null
 				: {
 						reply_markup: new InlineKeyboard().url(
-							"Botu Qrupa Əlavə Edin 👥",
+							"Botu bir gruba ekleyin 👥",
 							`https://t.me/${ctx.me.username}?startgroup=add`
 						),
 				  }
@@ -226,11 +226,11 @@ bot.use(session({getSessionKey, initial: () => ({})}))
 
 bot.command('start', (ctx) => {
     ctx.reply(`
-👋 Salam!
+👋 Selam!
 
- Mən, vaxtıvızı əyləncəli hala gətirmək üçün Yaş Təxmin etmə botuyam 🙂
+ Ben yaş tahmin oyun botuyum beni grubumuza ekleyin oynayın eğlenin 🙂
 
- Daha ətraflı məlumat üçün /help əmrindən istifadə edin.. `,{
+ Daha fazla bilgi ve destek için @cengonuzz .. `,{
         reply_markup:{
             inline_keyboard:[
                 [{text:'Botu gruba ekle 👥', url:`https://t.me/${ctx.me.username}?startgroup=add`}],
@@ -242,10 +242,10 @@ bot.command('start', (ctx) => {
 
 //geri
 bot.callbackQuery("əmr", async (ctx) => {
-  await ctx.reply(`\n👋 Salam Mən qrup çatlarında yaşı təxmin et oynamaq üçün bir robotam Qaydalar sadədir: Mən sizə bir Müğəninin şəklini atıram, sizin vəzifəniz onun yaşını təxmin etməkdir. Nə qədər dəqiq cavab versəniz, bir o qədər az xal itirirsiniz Əmrlər \n\n /game - 🕹 Yeni oyun \n\n /stop - 🛑 Oyunu dayandir \n\n /top - 🔝  Qrup oyunçusu reytinqi \n\n /reytinq - 🌎 Qlobal reytinq \n\n /help - Əmrlər haqqinda məlumat `,{
+  await ctx.reply(`\n👋 Selam yaş tahmin oyun botuna hoş geldiniz şimdi size komutları paylaşıyorum \n\n /game - 🕹 Yeni oyun \n\n /stop - 🛑 Oyunu sonlandır \n\n /top - 🔝 Grup oyuncusu reytingi \n\n /reyting - 🌎 Global reyting `,{
         reply_markup:{
             inline_keyboard:[
-                [{text:'Geri Qayıt', callback_data:"geri"}]
+                [{text:'Geri Dön', callback_data:"geri"}]
         ]
         }
     })
@@ -255,21 +255,21 @@ bot.callbackQuery("əmr", async (ctx) => {
 // başa 
 bot.callbackQuery('geri', (ctx) => {
     ctx.reply(`
-👋 Salam!
+👋 Selam!
 
- Mən, vaxtıvızı əyləncəli hala gətirmək üçün Yaş Təxmin etmə botuyam 🙂
+ Ben yaş tahmin oyun botuyum beni grubumuza ekleyin oynayın eğlenin 🙂
 
- Daha ətraflı məlumat üçün /help əmrindən istifadə edin.. `,{
+ Daha fazla bilgi ve destek için @cengonuzz .. `,{
         reply_markup:{
             inline_keyboard:[
-                [{text:'Botu Qrupa Əlavə Edin 👥', url:`https://t.me/${ctx.me.username}?startgroup=add`}],
-                [{text:'Rəsmi Kanalımız 🆕', url:`t.me/goldenbotresmi`},{text:'Əmirlər', callback_data:'əmr'}]
+                [{text:'Botu gruba ekle 👥', url:`https://t.me/${ctx.me.username}?startgroup=add`}],
+                [{text:'Resmi Kanalımız 🆕', url:`t.me/Mamaklibirininruhu`},{text:'komutlar', callback_data:'əmr'}]
             ]
         }
     })
 })
 
-bot.command("game", async ctx => {
+bot.command("game","oyna" async ctx => {
 	console.log("Game command")
 	if (!isGroupChat(ctx)) {
 		//PM, skipping
@@ -277,7 +277,7 @@ bot.command("game", async ctx => {
 	}
 	if (ctx.session?.isPlaying) {
 		return await ctx.reply(
-			`❌ Davam edən oyun artıq var. /stop@${ctx.me.username} Əmri ilə oyunu dayandıra bilərsiniz.`
+			`❌ Zaten devam eden bir oyun var. /stop@${ctx.me.username} komutu ile durdurabilirsiniz.`
 		)
 	}
 
@@ -309,7 +309,7 @@ bot.command("game", async ctx => {
 		await updateChatLastPlayDate({chat_id: ctx.chat.id})
 	}
 
-	await ctx.reply(bold("Oyun başlayır!"))
+	await ctx.reply(bold("Oyun başlıyo la bebeler!"))
 
 	ctx.session.timeouts.beforeGame = setTimeout(async function startRound() {
 		/*const photosPath = path.resolve(__dirname, "../photos")
@@ -348,7 +348,7 @@ bot.command("game", async ctx => {
 							ctx.chat.id,
 							guessMessage.message_id,
 							{
-								caption: `🔁 Yaxşı, şəkli dəyişirəm ${bold(
+								caption: `🔁 Güzel, Resmi değiştir ${bold(
 									ctx.session.changePhoto.first_name
 								)}. Hazır ol!`,
 								parse_mode: "HTML",
@@ -437,7 +437,7 @@ bot.command("game", async ctx => {
 								console.log("Dead chat")
 								await ctx.reply(
 									trim(`
-								😴 Deyəsən oynamırsan. Yaxşı, oyunu bitirdim...
+								😴 Ohooo oyun açık kimse oynamıyor küsecekseniz oynamayak la...
 								
 								${getFooterText(ctx)}
 							`),
@@ -451,14 +451,14 @@ bot.command("game", async ctx => {
 								)
 								await ctx.reply(
 									trim(`
-									Bu fotodakı şəxs ${bold(ctx.session.rightAnswer)} ${bold(
+									Bu fotoğraftaki şeker kardeşimiz ${bold(ctx.session.rightAnswer)} ${bold(
 										pluralize(
 											ctx.session.rightAnswer,
 											"Yaşındadır",
 											"Yaşındadır",
 											"Yaşındadır"
 										)
-									)}. Budur, kim daha yaxın idi:
+									)}. Aferina, En yakın tahmini yapan Gardaşlığım:
 				
 									${top
 										.sort((a, b) => b.addScore - a.addScore)
@@ -496,7 +496,7 @@ bot.command("game", async ctx => {
 
 										await ctx.reply(
 											trim(`
-												${bold("🏁 Qaliblər:")}
+												${bold("🏁 Kazananlar:")}
 										
 												${top
 													.sort(
@@ -520,9 +520,9 @@ bot.command("game", async ctx => {
 																player.gameScore
 															)} ${pluralize(
 																player.gameScore,
-																"xal",
-																"xal",
-																"xal"
+																"puan",
+																"puan",
+																"puan"
 															)}`
 													)
 													.join("\n")}
@@ -556,16 +556,16 @@ bot.command("game", async ctx => {
 			await destroyGame(ctx)
 			await ctx.reply(
 				trim(`
-				${bold("❌ Bir səhv baş verdi!")}
+				${bold("❌ Bir hata oluştu!")}
 				
-				Botun admin hüquqlarına və fotoşəkillər göndərmək icazəsinə malik olduğundan əmin olun.
+				Bota yetki mi vermedin bota yetki verki sorun olmasın.
 			`)
 			)
 		}
 	}, waitStep)
 })
 
-bot.command("stop", async ctx => {
+bot.command("stop", "kapat" async ctx => {
 	if (!isGroupChat(ctx)) {
 		//PM, skipping
 		return await handlers.onlyGroups(ctx)
@@ -573,7 +573,7 @@ bot.command("stop", async ctx => {
 
 	if (!ctx?.session?.isPlaying) {
 		return await ctx.reply(
-			`❌ Oyun işə salınmayıb. Onu əmrlə çaşdıra bilərsiniz /game@${ctx.me.username}.`
+			`❌ Oyun zaten yok boş yapma. Onu komutu ile çalıştırabilirsin /game@${ctx.me.username}.`
 		)
 	}
 
