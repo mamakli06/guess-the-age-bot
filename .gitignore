@@ -1,4 +1,4 @@
-/node_modules
+9/node_modules
 /.env
 /.idea
 
@@ -39,3 +39,4 @@
 !/photos/17977437_1956-11-03_2011.jpg
 !/photos/17988142_1984-09-19_2010.jpg
 !/photos/181855_1900-10-05_1978.jpg
+!/photos/182855_1900-10-05_1937.jpg
