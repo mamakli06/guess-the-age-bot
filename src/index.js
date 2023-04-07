@@ -83,7 +83,7 @@ const getRoundMessageText = ctx => {
 
 	return trim(`
 		${bold(`Raund ${ctx.session.round}/${ROUNDS}`)}
-		Sizcə fotodakı adam neçə yaşındadır?
+		Sizce bu mübarek kaç yaşındadır?
 		${
 			answers.length > 0
 				? `\n${answers
@@ -96,7 +96,7 @@ const getRoundMessageText = ctx => {
 						.join("\n")}\n`
 				: ""
 		}
-		${["M", "A", "M", "A", "K", "L", "I", "🖤", "❤️"].slice(0, ctx.session.time).join("")}${"⚪️".repeat(
+		${["🔴", "🟡", "🟢"].slice(0, ctx.session.time).join("")}${"⚪️".repeat(
 		repeatCount
 	)}
 	`)
@@ -458,7 +458,7 @@ bot.command("game", async ctx => {
 											"Yaşındadır",
 											"Yaşındadır"
 										)
-									)}. Aferina, En yakın tahmini yapan Gardaşlığım:
+									)}. Aferin, En yakın tahmini yapan Gardaşlığım:
 				
 									${top
 										.sort((a, b) => b.addScore - a.addScore)
@@ -601,7 +601,7 @@ bot.command("top", async ctx => {
 	if (!chat || chat?.players.length === 0) {
 		return await ctx.reply(
 			trim(`
-			${bold("❌ Bu çatda hələ heç bir oyun oynamamısınız.")}
+			${bold("❌ Bu grupta hiç oyun oynamamışsınız.")}
 			
 			🕹 Yeni oyun başlat
 			/game@${ctx.me.username}
@@ -611,7 +611,7 @@ bot.command("top", async ctx => {
 
 	await ctx.reply(
 		trim(`
-			${bold("🔝 Bu Qrupda bütün zamanların ən yaxşı oyunçuları:")}
+			${bold("🔝 Bu grupta en yüksek puan alanlar:")}
 
 			${chat.players
 				.slice()
@@ -625,9 +625,9 @@ bot.command("top", async ctx => {
 							player.total_score
 						)} ${pluralize(
 							player.total_score,
-							"xal",
-							"xal",
-							"xal"
+							"puan",
+							"puan",
+							"puan"
 						)}`
 				)
 				.join("\n")}
@@ -666,7 +666,7 @@ bot.command("reytinq", async ctx => {
 
 	if (topMap.size === 0) {
 		return await ctx.reply(
-			bold("❌ Hazırda sıralamaq mümkün deyil.")
+			bold("❌ sıralama şuan mümkün değil .")
 		)
 	}
 
@@ -695,7 +695,7 @@ bot.command("reytinq", async ctx => {
 
 	await ctx.reply(
 		trim(`
-			${bold("🌍 Qlobal Oyunçu Reytinqi:")}
+			${bold("🌍 Global Oyunçu Reytinqi:")}
 
 			${topN
 				.map(
@@ -706,9 +706,9 @@ bot.command("reytinq", async ctx => {
 							player.total_score
 						)} ${pluralize(
 							player.total_score,
-							"xal",
-							"xal",
-							"xal"
+							"puan",
+							"puan",
+							"puan"
 						)}`
 				)
 				.join("\n")}
@@ -746,7 +746,7 @@ bot.on("message", async ctx => {
 		if (!/^[0-9]+$/.test(ctx.msg.text)) return
 		const answer = Number(ctx.msg.text)
 		if (answer <= 0 || answer > 120) {
-			return ctx.reply("Cavab diapazondan kənardadır (1 - 120)", {
+			return ctx.reply("Cevap şu aralıkta olmalıdır (1 - 120)", {
 				reply_to_message_id: ctx.msg.message_id,
 			})
 		}
@@ -790,11 +790,11 @@ bot.on("callback_query", async ctx => {
 			await ctx.answerCallbackQuery()
 		}
 	} else {
-		await ctx.answerCallbackQuery("❌ Komanda tapılmadı və ya silindi")
+		await ctx.answerCallbackQuery("❌ komut bulunamadı ve silindi")
 	}
 })
 ;(async () => {
 	await bot.api.deleteWebhook({drop_pending_updates: true})
 	run(bot)
-	console.log("Bot bomba kimi işləyir")
+	console.log("Bot çalışıyor")
 })()
