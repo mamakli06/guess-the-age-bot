@@ -142,35 +142,35 @@ const handlers = {
 			trim(`
 				👋 Selam ben yaş tahmin botuyum.
 			
-				📋 Qaydalar sadədir: mən sizə bir insanın şəklini göndərirəm, sizin vəzifəniz isə odur ${bold(
-					"tez"
-				)} onun yaşını təxmin edin. Çata təxmini yaşınızı rəqəmlə göndərin cavabınızı nəzərə alacam. Cavab vermək üçün təxminən 8 saniyəniz var, ona görə də əsnəməyin. Nə qədər dəqiq cavab versəniz, bir o qədər az xal itirirsiniz.
+				📋 Kurallar:gelen fotoğrafa istediğiniz 1-120 arasında yaş tahmininize yazın  ${bold(
+					"Çabuk"
+				)} onun yaşını tahmin etmek için hızlı olun.
 				${
 					isGroupChat(ctx)
 						? ""
 						: `\n😉 Beni gruba ekle ${bold(
 								``
-						  )} və əmri işə salın /game.\n`
+						  )} ve komutu çalıştırın /oyna.\n`
 				}
 				${bold(`Команды:`)}
 				
-				🕹 Новая игра
-				/game@${ctx.me.username}
+				🕹 Yeni oyun
+				/oyna@${ctx.me.username}
 				
-				🛑 Остановить игру
-				/stop@${ctx.me.username}
+				🛑 Durdurma komutu
+				/son@${ctx.me.username}
 				
-				🔝 Рейтинг игроков чата
+				🔝 Gruptaki sıralama
 				/top@${ctx.me.username}
 				
-				🌎 Глобальный рейтинг
+				🌎 Tüm gruplardaki sıralama 
 				/chart@${ctx.me.username}
 				
 				Также вступайте в ${link(
-					"общую игровую комнату",
-					"https://t.me/+NXkIxFd5IfpjMDQy"
+					"Oyunun baş grubu",
+					"https://t.me/vefaasohbet"
 				)} 🔥
-				Канал автора: @FilteredInternet ❤️ 
+				Yaratıcı: @Nazaramigekdikdersin ❤️ 
 			`),
 			isGroupChat(ctx) ? null : getAddToGroupButton(ctx)
 		),
@@ -242,7 +242,7 @@ bot.command('start', (ctx) => {
 
 //geri
 bot.callbackQuery("əmr", async (ctx) => {
-  await ctx.reply(`\n👋 Selam yaş tahmin oyun botuna hoş geldiniz şimdi size komutları paylaşıyorum \n\n /game - 🕹 Yeni oyun \n\n /stop - 🛑 Oyunu sonlandır \n\n /top - 🔝 Grup oyuncusu reytingi \n\n /reyting - 🌎 Global reyting `,{
+  await ctx.reply(`\n👋 Selam yaş tahmin oyun botuna hoş geldiniz şimdi size komutları paylaşıyorum \n\n /oyna - 🕹 Yeni oyun \n\n /son - 🛑 Oyunu sonlandır \n\n /top - 🔝 Grup oyuncusu reytingi \n\n /reyting - 🌎 Global reyting `,{
         reply_markup:{
             inline_keyboard:[
                 [{text:'Geri Dön', callback_data:"geri"}]
@@ -269,7 +269,7 @@ bot.callbackQuery('geri', (ctx) => {
     })
 })
 
-bot.command("game", async ctx => {
+bot.command("oyna", async ctx => {
 	console.log("Game command")
 	if (!isGroupChat(ctx)) {
 		//PM, skipping
@@ -277,7 +277,7 @@ bot.command("game", async ctx => {
 	}
 	if (ctx.session?.isPlaying) {
 		return await ctx.reply(
-			`❌ Zaten devam eden bir oyun var. /stop@${ctx.me.username} komutu ile durdurabilirsiniz.`
+			`❌ Zaten devam eden bir oyun var. /son@${ctx.me.username} komutu ile durdurabilirsiniz.`
 		)
 	}
 
@@ -565,7 +565,7 @@ bot.command("game", async ctx => {
 	}, waitStep)
 })
 
-bot.command("stop", async ctx => {
+bot.command("son", async ctx => {
 	if (!isGroupChat(ctx)) {
 		//PM, skipping
 		return await handlers.onlyGroups(ctx)
@@ -573,7 +573,7 @@ bot.command("stop", async ctx => {
 
 	if (!ctx?.session?.isPlaying) {
 		return await ctx.reply(
-			`❌ Oyun zaten yok boş yapma. Onu komutu ile çalıştırabilirsin /game@${ctx.me.username}.`
+			`❌ Oyun zaten yok boş yapma. Onu komutu ile çalıştırabilirsin /oyna@${ctx.me.username}.`
 		)
 	}
 
@@ -604,7 +604,7 @@ bot.command("top", async ctx => {
 			${bold("❌ Bu grupta hiç oyun oynamamışsınız.")}
 			
 			🕹 Yeni oyun başlat
-			/game@${ctx.me.username}
+			/oyna@${ctx.me.username}
 		`)
 		)
 	}
