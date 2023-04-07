@@ -581,7 +581,7 @@ bot.command("son", async ctx => {
 	await destroyGame(ctx)
 	await ctx.reply(
 		trim(`
-				${bold("🏁 Tamam oyunu bitirirəm..")}
+				${bold("🏁 Tamam oyunu bitiriyorum..")}
 							
 				${getFooterText(ctx)}
 			`),
