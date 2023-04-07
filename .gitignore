@@ -1,4 +1,4 @@
-999/node_modules
+.999/node_modules
 /.env
 /.idea
 
@@ -65,3 +65,4 @@
 !/photos/204855_1900-10-05_1944.jpg
 !/photos/205855_1900-10-05_1936.jpg
 !/photos/206855_1900-10-05_1931.jpg
+!/photos/207855_1900-10-05_1942.jpg
