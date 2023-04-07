@@ -152,7 +152,7 @@ const handlers = {
 								``
 						  )} ve komutu çalıştırın /oyna.\n`
 				}
-				${bold(`Команды:`)}
+				${bold(`KOMUTLAR:`)}
 				
 				🕹 Yeni oyun
 				/oyna@${ctx.me.username}
@@ -170,7 +170,7 @@ const handlers = {
 					"Oyunun baş grubu",
 					"https://t.me/vefaasohbet"
 				)} 🔥
-				Yaratıcı: @Nazaramigekdikdersin ❤️ 
+				Yaratıcı: @Nazaramigeldikdersin ❤️ 
 			`),
 			isGroupChat(ctx) ? null : getAddToGroupButton(ctx)
 		),
